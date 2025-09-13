@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OWASP Top 10 Penetration Testing Training</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-shield-alt text-blue-600 text-2xl"></i>
+                    <h1 class="text-xl font-bold text-gray-900">OWASP Top 10 Training</h1>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#setup" class="nav-link">Setup</a>
+                    <a href="#activities" class="nav-link">Activities</a>
+                    <a href="#slides" class="nav-link">Slides</a>
+                    <a href="#resources" class="nav-link">Resources</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-900">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#setup" class="mobile-nav-link">Setup</a>
+                <a href="#activities" class="mobile-nav-link">Activities</a>
+                <a href="#slides" class="mobile-nav-link">Slides</a>
+                <a href="#resources" class="mobile-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div class="max-w-7xl mx-auto px-4 py-20">
+            <div class="text-center">
+                <div class="mb-8">
+                    <i class="fas fa-bug text-6xl text-blue-600 mb-4"></i>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    OWASP Top 10
+                </h1>
+                <h2 class="text-2xl md:text-4xl font-semibold mb-8 text-gray-700">
+                    Penetration Testing Training
+                </h2>
+                <p class="text-xl md:text-2xl mb-12 text-gray-600 max-w-4xl mx-auto">
+                    Master web application security through hands-on CTF challenges using OWASP Juice Shop and Burp Suite
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="#setup" class="btn-primary">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Get Started
+                    </a>
+                    <a href="#activities" class="btn-secondary">
+                        <i class="fas fa-tasks mr-2"></i>
+                        View Activities
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Setup Section -->
+    <section id="setup" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-gray-900">Environment Setup</h2>
+                <p class="text-xl text-gray-600">Get your penetration testing environment ready</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="setup-card">
+                    <div class="text-center mb-6">
+                        <i class="fab fa-docker text-4xl text-blue-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900">1. OWASP Juice Shop</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="code-block">
+                            <code>docker pull bkimminich/juice-shop</code>
+                        </div>
+                        <div class="code-block">
+                            <code>docker run -d -p 3000:3000 juice-shop</code>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-4">Set up the vulnerable web application for testing</p>
+                </div>
+
+                <div class="setup-card">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-firefox text-4xl text-orange-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900">2. FoxyProxy</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <p class="text-gray-600">Install FoxyProxy extension in Firefox</p>
+                        <p class="text-gray-600">Configure proxy: 127.0.0.1:8080</p>
+                    </div>
+                    <p class="text-gray-600 mt-4">Route traffic through Burp Suite proxy</p>
+                </div>
+
+                <div class="setup-card">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-bug text-4xl text-green-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900">3. Burp Suite</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <p class="text-gray-600">Download Burp Suite Community</p>
+                        <p class="text-gray-600">Configure proxy listener on port 8080</p>
+                    </div>
+                    <p class="text-gray-600 mt-4">Intercept and analyze web traffic</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-gray-900">OWASP Top 10 Activities</h2>
+                <p class="text-xl text-gray-600">Hands-on CTF challenges for each vulnerability</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="activity-card" data-difficulty="medium">
+                    <div class="activity-header">
+                        <h3 class="text-lg font-semibold">A1: Broken Access Control</h3>
+                        <span class="difficulty-badge medium">Medium</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Exploit unauthorized access vulnerabilities</p>
+                    <div class="flex space-x-2">
+                        <a href="activities/A1_Broken_Access_Control.md" class="btn-small">
+                            <i class="fas fa-file-alt mr-1"></i>Guide
+                        </a>
+                        <a href="slides/a1_broken_access.html" class="btn-small">
+                            <i class="fas fa-presentation mr-1"></i>Slides
+                        </a>
+                    </div>
+                </div>
+
+                <div class="activity-card" data-difficulty="hard">
+                    <div class="activity-header">
+                        <h3 class="text-lg font-semibold">A2: Cross-Site Scripting</h3>
+                        <span class="difficulty-badge hard">Hard</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Inject malicious scripts into web pages</p>
+                    <div class="flex space-x-2">
+                        <a href="activities/A2_Cross_Site_Scripting.md" class="btn-small">
+                            <i class="fas fa-file-alt mr-1"></i>Guide
+                        </a>
+                        <a href="slides/a2_xss.html" class="btn-small">
+                            <i class="fas fa-presentation mr-1"></i>Slides
+                        </a>
+                    </div>
+                </div>
+
+                <div class="activity-card" data-difficulty="hard">
+                    <div class="activity-header">
+                        <h3 class="text-lg font-semibold">A3: SQL Injection</h3>
+                        <span class="difficulty-badge hard">Hard</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Exploit database queries to bypass authentication</p>
+                    <div class="flex space-x-2">
+                        <a href="activities/A3_SQL_Injection.md" class="btn-small">
+                            <i class="fas fa-file-alt mr-1"></i>Guide
+                        </a>
+                        <a href="slides/a3_sql_injection.html" class="btn-small">
+                            <i class="fas fa-presentation mr-1"></i>Slides
+                        </a>
+                    </div>
+                </div>
+
+                <div class="activity-card" data-difficulty="medium">
+                    <div class="activity-header">
+                        <h3 class="text-lg font-semibold">A4: Insecure Direct Object References</h3>
+                        <span class="difficulty-badge medium">Medium</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Manipulate object references to access unauthorized data</p>
+                    <div class="flex space-x-2">
+                        <a href="activities/A4_IDOR.md" class="btn-small">
+                            <i class="fas fa-file-alt mr-1"></i>Guide
+                        </a>
+                        <a href="slides/a4_idor.html" class="btn-small">
+                            <i class="fas fa-presentation mr-1"></i>Slides
+                        </a>
+                    </div>
+                </div>
+
+                <div class="activity-card" data-difficulty="easy">
+                    <div class="activity-header">
+                        <h3 class="text-lg font-semibold">A5: Security Misconfiguration</h3>
+                        <span class="difficulty-badge easy">Easy</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Exploit improperly configured security settings</p>
+                    <div class="flex space-x-2">
+                        <a href="activities/A5_Security_Misconfiguration.md" class="btn-small">
+                            <i class="fas fa-file-alt mr-1"></i>Guide
+                        </a>
+                        <a href="slides/a5_security_misconfig.html" class="btn-small">
+                            <i class="fas fa-presentation mr-1"></i>Slides
+                        </a>
+                    </div>
+                </div>
+
+                <div class="activity-card" data-difficulty="hard">
+                    <div class="activity-header">
+                        <h3 class="text-lg font-semibold">A6: Vulnerable Components</h3>
+                        <span class="difficulty-badge hard">Hard</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Exploit known vulnerabilities in third-party components</p>
+                    <div class="flex space-x-2">
+                        <a href="activities/A6_Vulnerable_and_Outdated_Components.md" class="btn-small">
+                            <i class="fas fa-file-alt mr-1"></i>Guide
+                        </a>
+                        <a href="slides/a6_vulnerable_components.html" class="btn-small">
+                            <i class="fas fa-presentation mr-1"></i>Slides
+                        </a>
+                    </div>
+                </div>
+
+                <div class="activity-card" data-difficulty="medium">
+                    <div class="activity-header">
+                        <h3 class="text-lg font-semibold">A7: Authentication Failures</h3>
+                        <span class="difficulty-badge medium">Medium</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Exploit weaknesses in authentication mechanisms</p>
+                    <div class="flex space-x-2">
+                        <a href="activities/A7_Identification_and_Authentication_Failures.md" class="btn-small">
+                            <i class="fas fa-file-alt mr-1"></i>Guide
+                        </a>
+                        <a href="slides/a7_auth_failures.html" class="btn-small">
+                            <i class="fas fa-presentation mr-1"></i>Slides
+                        </a>
+                    </div>
+                </div>
+
+                <div class="activity-card" data-difficulty="hard">
+                    <div class="activity-header">
+                        <h3 class="text-lg font-semibold">A8: Software Integrity Failures</h3>
+                        <span class="difficulty-badge hard">Hard</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Exploit vulnerabilities in the software supply chain</p>
+                    <div class="flex space-x-2">
+                        <a href="activities/A8_Software_and_Data_Integrity_Failures.md" class="btn-small">
+                            <i class="fas fa-file-alt mr-1"></i>Guide
+                        </a>
+                        <a href="slides/a8_software_integrity.html" class="btn-small">
+                            <i class="fas fa-presentation mr-1"></i>Slides
+                        </a>
+                    </div>
+                </div>
+
+                <div class="activity-card" data-difficulty="easy">
+                    <div class="activity-header">
+                        <h3 class="text-lg font-semibold">A9: Security Logging Failures</h3>
+                        <span class="difficulty-badge easy">Easy</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Detect and respond to security breaches</p>
+                    <div class="flex space-x-2">
+                        <a href="activities/A9_Security_Logging_and_Monitoring_Failures.md" class="btn-small">
+                            <i class="fas fa-file-alt mr-1"></i>Guide
+                        </a>
+                        <a href="slides/a9_security_logging.html" class="btn-small">
+                            <i class="fas fa-presentation mr-1"></i>Slides
+                        </a>
+                    </div>
+                </div>
+
+                <div class="activity-card" data-difficulty="hard">
+                    <div class="activity-header">
+                        <h3 class="text-lg font-semibold">A10: Server-Side Request Forgery</h3>
+                        <span class="difficulty-badge hard">Hard</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Exploit server functionality to access internal resources</p>
+                    <div class="flex space-x-2">
+                        <a href="activities/A10_Server_Side_Request_Forgery.md" class="btn-small">
+                            <i class="fas fa-file-alt mr-1"></i>Guide
+                        </a>
+                        <a href="slides/a10_ssrf.html" class="btn-small">
+                            <i class="fas fa-presentation mr-1"></i>Slides
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="text-center mt-12">
+                <div class="inline-flex bg-gray-800 rounded-lg p-1">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="easy">Easy</button>
+                    <button class="filter-btn" data-filter="medium">Medium</button>
+                    <button class="filter-btn" data-filter="hard">Hard</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slides Section -->
+    <section id="slides" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-gray-900">Presentation Slides</h2>
+                <p class="text-xl text-gray-600">Interactive slides for each vulnerability</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-shield-alt text-4xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Broken Access Control</h3>
+                    <a href="slides/a1_broken_access.html" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Slide
+                    </a>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-code text-4xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Cross-Site Scripting</h3>
+                    <a href="slides/a2_xss.html" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Slide
+                    </a>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-database text-4xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">SQL Injection</h3>
+                    <a href="slides/a3_sql_injection.html" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Slide
+                    </a>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-link text-4xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">IDOR</h3>
+                    <a href="slides/a4_idor.html" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Slide
+                    </a>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-wrench text-4xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Security Misconfiguration</h3>
+                    <a href="slides/a5_security_misconfig.html" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Slide
+                    </a>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-puzzle-piece text-4xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Vulnerable Components</h3>
+                    <a href="slides/a6_vulnerable_components.html" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Slide
+                    </a>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-user-lock text-4xl text-pink-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Authentication Failures</h3>
+                    <a href="slides/a7_auth_failures.html" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Slide
+                    </a>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-code-branch text-4xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Software Integrity Failures</h3>
+                    <a href="slides/a8_software_integrity.html" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Slide
+                    </a>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-search text-4xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Security Logging Failures</h3>
+                    <a href="slides/a9_security_logging.html" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Slide
+                    </a>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-server text-4xl text-cyan-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Server-Side Request Forgery</h3>
+                    <a href="slides/a10_ssrf.html" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Slide
+                    </a>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-trophy text-4xl text-gold"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Conclusion</h3>
+                    <a href="slides/conclusion.html" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Slide
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-gray-900">Additional Resources</h2>
+                <p class="text-xl text-gray-600">Expand your cybersecurity knowledge</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="resource-card">
+                    <i class="fas fa-globe text-3xl text-green-600 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">OWASP Foundation</h3>
+                    <p class="text-gray-600 mb-4">Official OWASP resources and documentation</p>
+                    <a href="https://owasp.org/" target="_blank" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>Visit
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-book text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">Web Security Academy</h3>
+                    <p class="text-gray-600 mb-4">PortSwigger's free online training</p>
+                    <a href="https://portswigger.net/web-security" target="_blank" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>Visit
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-laptop-code text-3xl text-purple-600 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">TryHackMe</h3>
+                    <p class="text-gray-600 mb-4">Hands-on cybersecurity training platform</p>
+                    <a href="https://tryhackme.com/" target="_blank" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>Visit
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-shield-alt text-3xl text-red-600 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">Hack The Box</h3>
+                    <p class="text-gray-600 mb-4">Advanced penetration testing challenges</p>
+                    <a href="https://www.hackthebox.com/" target="_blank" class="btn-small">
+                        <i class="fas fa-external-link-alt mr-1"></i>Visit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center">
+                <div class="flex justify-center items-center mb-4">
+                    <i class="fas fa-shield-alt text-green-600 text-2xl mr-2"></i>
+                    <h3 class="text-xl font-bold text-gray-900">OWASP Top 10 Training</h3>
+                </div>
+                <p class="text-gray-600 mb-6">Master web application security through hands-on practice</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://github.com/OWASP/Top10" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://owasp.org/" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors">
+                        <i class="fas fa-globe text-xl"></i>
+                    </a>
+                    <a href="https://twitter.com/owasp" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                </div>
+                <div class="mt-8 pt-8 border-t border-gray-300">
+                    <p class="text-gray-500">Author: M. Ben-Azzouz</p>
+                    <p class="text-gray-500">&copy; 2024 OWASP Top 10 Training. Educational purposes only.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+

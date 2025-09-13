@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A10: Server-Side Request Forgery</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #ffffff;
+            margin: 0 auto;
+            padding: 30px;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            color: #1f2937;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: #3b82f6;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            font-size: 20px;
+            color: #059669;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .info-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        .info-text {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.3;
+        }
+        .image-container {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+            height: 220px;
+            overflow: hidden;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+        }
+        .challenge-box {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #059669;
+            padding: 12px;
+            border-radius: 8px;
+        }
+        .challenge-title {
+            font-size: 16px;
+            color: #059669;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .challenge-text {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.3;
+        }
+        .code-block {
+            background: #f8fafc;
+            border: 1px solid #059669;
+            padding: 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #059669;
+            font-size: 12px;
+            margin-top: 8px;
+            overflow-x: auto;
+        }
+        .target-types {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .target-type {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .target-type-title {
+            font-size: 14px;
+            color: #ef4444;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .target-type-desc {
+            font-size: 12px;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h1 class="title">A10: Server-Side Request Forgery</h1>
+            <p class="subtitle">Exploiting server functionality to access internal resources</p>
+        </div>
+        
+        <div class="content">
+            <div class="left-column">
+                <h2 class="section-title">
+                    <i class="fas fa-server"></i>
+                    What is Server-Side Request Forgery?
+                </h2>
+                
+                <div class="info-box">
+                    <div class="info-text">
+                        Server-Side Request Forgery (SSRF) occurs when an attacker can make a server perform requests to an unintended location. This vulnerability allows attackers to force the server to connect to internal services or external systems they shouldn't have access to.
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="../images/activity_images/ssrf_1.png" alt="SSRF Attack Flow">
+                </div>
+                
+                <div class="target-types">
+                    <div class="target-type">
+                        <div class="target-type-title">Internal Services</div>
+                        <div class="target-type-desc">Accessing internal APIs, databases, or admin interfaces</div>
+                    </div>
+                    
+                    <div class="target-type">
+                        <div class="target-type-title">Cloud Metadata</div>
+                        <div class="target-type-desc">Accessing cloud provider metadata endpoints</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <h2 class="section-title">
+                    <i class="fas fa-code"></i>
+                    Common SSRF Vectors
+                </h2>
+                
+                <div class="info-box">
+                    <div class="info-text">
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>URL input fields (webhooks, integrations)</li>
+                            <li>File upload functionality that processes remote URLs</li>
+                            <li>PDF generators that fetch remote content</li>
+                            <li>Document/image processors that load external resources</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="../images/activity_images/ssrf_3.png" alt="SSRF Attack Example">
+                </div>
+                
+                <div class="challenge-box">
+                    <div class="challenge-title">
+                        <i class="fas fa-flag"></i>
+                        CTF Challenge
+                    </div>
+                    <div class="challenge-text">
+                        <strong>Objective:</strong> Exploit an SSRF vulnerability in the Juice Shop to access internal resources.<br>
+                        <strong>Hint:</strong> Look for functionality that fetches remote resources, like the image URL field in product reviews.
+                        <div class="code-block">
+                            http://localhost:3000/api/image-upload<br>
+                            {"url": "file:///etc/passwd"}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
